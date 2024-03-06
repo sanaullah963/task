@@ -10,28 +10,28 @@ function Home() {
 
   // submit handel
   const clickHandel = () => {
-    axios.post("http://localhost:8000/task", { task: change }).then((res) => {
+    axios.post("https://my-task-server.vercel.app/task", { task: change }).then((res) => {
       console.log(res.data);
       location.reload();
     });
   };
   // get data
   useEffect(() => {
-    axios.get("http://localhost:8000/task").then((res) => setTask(res.data));
+    axios.get("https://my-task-server.vercel.app/task").then((res) => setTask(res.data));
   }, []);
   // isOk handle
   const isOkHandel = (id, isOk) => {
     // console.log(task);
     if (!isOk) {
       axios
-        .post("http://localhost:8000/task/checked", { id })
+        .post("https://my-task-server.vercel.app/task/checked", { id })
         .then(() => location.reload());
     }
   };
   // delet handel
   const deletHandel = (id) => {
     axios
-      .delete(`http://localhost:8000/task/delete/${id}`)
+      .delete(`https://my-task-server.vercel.app/task/delete/${id}`)
       .then(() => location.reload());
   };
   
